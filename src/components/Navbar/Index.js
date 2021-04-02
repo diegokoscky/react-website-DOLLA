@@ -1,5 +1,5 @@
 import React from 'react'
-import { FaBars } from 'react-icons/fa'
+import {FaBars} from 'react-icons/fa'
 import {IconContext} from 'react-icons/lib'
 import {
     Nav,
@@ -13,7 +13,7 @@ import {
     NavBtnLink
 } from './NavbarElements'
 
-const Navbar = () => {
+const Navbar = ({toggle}) => {
     return (
         <>
             <IconContext.Provider value={
@@ -22,7 +22,7 @@ const Navbar = () => {
                 <Nav>
                     <NavbarContainer>
                         <NavLogo to="/">dolla</NavLogo>
-                        <MobileIcon>
+                        <MobileIcon onClick={toggle}>
                             <FaBars/>
                         </MobileIcon>
                         <NavMenu>
@@ -44,7 +44,7 @@ const Navbar = () => {
                                 Entrar
                             </NavBtnLink>
                         </NavBtn>
-                            
+
                     </NavbarContainer>
                 </Nav>
             </IconContext.Provider>
@@ -52,4 +52,4 @@ const Navbar = () => {
     )
 }
 
-export default Navbar
+export default Navbar;
