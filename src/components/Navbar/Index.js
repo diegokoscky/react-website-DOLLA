@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import {FaBars} from 'react-icons/fa'
 import {IconContext} from 'react-icons/lib'
+import {animateScroll as scroll} from 'react-scroll'
 import {
     Nav,
     NavbarContainer,
@@ -17,10 +18,9 @@ const Navbar = ({toggle}) => {
     const [scrollNav, setScrollNav] = useState(false);
 
     const changeNav = () => {
-        if(window.scrollY >= 80) {
+        if (window.scrollY >= 80) {
             setScrollNav(true);
-        }
-        else {
+        } else {
             setScrollNav(false);
         }
     }
@@ -29,6 +29,10 @@ const Navbar = ({toggle}) => {
         window.addEventListener('scroll', changeNav);
     }, [])
 
+    const toggleHome = () => {
+        scroll.scrollToTop();
+    }
+
     return (
         <>
             <IconContext.Provider value={
@@ -36,22 +40,43 @@ const Navbar = ({toggle}) => {
             }>
                 <Nav scrollNav={scrollNav}>
                     <NavbarContainer>
-                        <NavLogo to="/">dolla</NavLogo>
+                        <NavLogo to="/"
+                            onClick={toggleHome}>dolla</NavLogo>
                         <MobileIcon onClick={toggle}>
                             <FaBars/>
                         </MobileIcon>
                         <NavMenu>
                             <NavItem>
-                                <NavLinks to="sobre">Sobre</NavLinks>
+                                <NavLinks to="sobre"
+                                    smooth={true}
+                                    duration={500}
+                                    spy={true}
+                                    exact='true'
+                                    offset={0}>Sobre</NavLinks>
                             </NavItem>
                             <NavItem>
-                                <NavLinks to="descobrir">Descobrir</NavLinks>
+                                <NavLinks to="descobrir"
+                                    smooth={true}
+                                    duration={500}
+                                    spy={true}
+                                    exact='true'
+                                    offset={0}>Descobrir</NavLinks>
                             </NavItem>
                             <NavItem>
-                                <NavLinks to="servicos">Serviços</NavLinks>
+                                <NavLinks to="servicos"
+                                    smooth={true}
+                                    duration={500}
+                                    spy={true}
+                                    exact='true'
+                                    offset={0}>Serviços</NavLinks>
                             </NavItem>
                             <NavItem>
-                                <NavLinks to="cadastrar">Cadastrar</NavLinks>
+                                <NavLinks to="cadastrar"
+                                    smooth={true}
+                                    duration={500}
+                                    spy={true}
+                                    exact='true'
+                                    offset={0}>Cadastrar</NavLinks>
                             </NavItem>
                         </NavMenu>
                         <NavBtn>
